@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://yht6sc5gsv3t"]
+
+[ext_resource type="Texture2D" uid="uid://cotc4pi0kdgef" path="res://addons/Tiny Swords (Update 010)/Factions/Knights/Troops/Warrior/Purple/Warrior_Purple.png" id="1_6yla8"]
+[ext_resource type="PackedScene" uid="uid://bf0vhfmb2eel0" path="res://player/player.tscn" id="2_xopha"]
+[ext_resource type="PackedScene" uid="uid://bu4gbuuuqnpfl" path="res://enemies/goblin.tscn" id="3_os441"]
+[ext_resource type="Texture2D" uid="uid://xq5hd2ne1c35" path="res://addons/Tiny Swords (Update 010)/Resources/Resources/G_Idle.png" id="4_ykihe"]
+[ext_resource type="Texture2D" uid="uid://di3n8ssk0ryq5" path="res://addons/Tiny Swords (Update 010)/Resources/Resources/M_Spawn.png" id="5_ys0yx"]
+[ext_resource type="Texture2D" uid="uid://c1udrdbx0d4sv" path="res://addons/Tiny Swords (Update 010)/Resources/Resources/G_Spawn.png" id="6_t33ce"]
+[ext_resource type="Texture2D" uid="uid://qcimhd4xq1um" path="res://addons/Tiny Swords (Update 010)/Resources/Resources/W_Spawn.png" id="7_t6ve4"]
+
+[node name="Test-player" type="Node2D"]
+
+[node name="WarriorPurple" type="Sprite2D" parent="."]
+position = Vector2(1600, 300)
+scale = Vector2(0.430773, 0.265951)
+texture = ExtResource("1_6yla8")
+
+[node name="Player" parent="." instance=ExtResource("2_xopha")]
+position = Vector2(102, 85)
+motion_mode = 1
+
+[node name="Goblin" parent="." instance=ExtResource("3_os441")]
+position = Vector2(659, 222)
+
+[node name="GIdle" type="Sprite2D" parent="."]
+position = Vector2(1383, 586)
+texture = ExtResource("4_ykihe")
+
+[node name="MSpawn" type="Sprite2D" parent="."]
+position = Vector2(1502, 745)
+texture = ExtResource("5_ys0yx")
+
+[node name="GSpawn" type="Sprite2D" parent="."]
+position = Vector2(1500, 837)
+texture = ExtResource("6_t33ce")
+
+[node name="WSpawn" type="Sprite2D" parent="."]
+position = Vector2(1500, 913)
+texture = ExtResource("7_t6ve4")

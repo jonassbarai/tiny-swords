@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://xwgppnsl50wf"]
+
+[ext_resource type="PackedScene" uid="uid://bf0vhfmb2eel0" path="res://player/player.tscn" id="1_1pkti"]
+[ext_resource type="PackedScene" uid="uid://dvlcavj1xooq6" path="res://enemies/Sheep.tscn" id="2_xlg0j"]
+[ext_resource type="PackedScene" uid="uid://bm83tflt7myuv" path="res://misc/Ritual.tscn" id="3_abfud"]
+
+[node name="Test-battle" type="Node2D"]
+position = Vector2(-4, 5)
+
+[node name="Player" parent="." instance=ExtResource("1_1pkti")]
+position = Vector2(497, 298)
+
+[node name="Sheep" parent="." instance=ExtResource("2_xlg0j")]
+position = Vector2(908, 397)
+
+[node name="Node2D" parent="." instance=ExtResource("3_abfud")]
+scale = Vector2(1.01299, 1.08186)
