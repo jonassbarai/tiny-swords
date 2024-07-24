@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bf0vhfmb2eel0"]
+[gd_scene load_steps=20 format=3 uid="uid://bf0vhfmb2eel0"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_4rwv8"]
 [ext_resource type="Texture2D" uid="uid://cotc4pi0kdgef" path="res://addons/Tiny Swords (Update 010)/Factions/Knights/Troops/Warrior/Purple/Warrior_Purple.png" id="1_7dhjm"]
@@ -187,9 +187,15 @@ radius = 62.0081
 [sub_resource type="CircleShape2D" id="CircleShape2D_7lfbu"]
 radius = 23.0217
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mqhsx"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_78b6a"]
+bg_color = Color(0.992157, 0.0470588, 0.0117647, 1)
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_4rwv8")
-ritual_interval = 10.0
+ritual_interval = 1000.0
 ritual_scene = ExtResource("2_slmpd")
 death_prefab = ExtResource("2_o6veb")
 
@@ -225,3 +231,13 @@ debug_color = Color(0.0864122, 0.642066, 0.286879, 0)
 position = Vector2(0, -19)
 shape = SubResource("CircleShape2D_7lfbu")
 debug_color = Color(0.960784, 0, 0.0156863, 0.278431)
+
+[node name="HealthProgressBar" type="ProgressBar" parent="."]
+offset_left = -31.0
+offset_right = 32.0
+offset_bottom = 7.0
+theme_override_styles/background = SubResource("StyleBoxFlat_mqhsx")
+theme_override_styles/fill = SubResource("StyleBoxFlat_78b6a")
+step = 1.0
+value = 60.0
+show_percentage = false

@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://djpwjhgr3h7gf"]
+
+[ext_resource type="PackedScene" uid="uid://hd1ho0h1u3w6" path="res://UI/game_UI.tscn" id="1_46ihi"]
+[ext_resource type="PackedScene" uid="uid://bf0vhfmb2eel0" path="res://player/player.tscn" id="1_dk13r"]
+[ext_resource type="PackedScene" uid="uid://bfvmt355eaet1" path="res://misc/Gold.tscn" id="2_fs4ix"]
+
+[node name="TesteMeat" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_dk13r")]
+position = Vector2(157, 199)
+
+[node name="CanvasLayer" parent="." instance=ExtResource("1_46ihi")]
+
+[node name="Gold" parent="." instance=ExtResource("2_fs4ix")]
+position = Vector2(330, 81)

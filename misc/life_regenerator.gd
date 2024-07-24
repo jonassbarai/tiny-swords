@@ -1,6 +1,6 @@
 extends AnimatedSprite2D
 
-@export var regeneration_amount: int = 10
+@export var amount: int = 10
 
 
 func _ready():
@@ -8,8 +8,8 @@ func _ready():
 	
 func on_Body_Enter(body: Node2D):
 	if body.is_in_group("Player"):
-		var player = body
-		player.heal(regeneration_amount)
+		var player = body		
+		player.gold_collected.emit(amount)
 		queue_free()
 	pass
 	

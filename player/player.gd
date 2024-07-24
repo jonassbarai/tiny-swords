@@ -30,10 +30,17 @@ var ritual_cooldown: float = 0.0
 
 
 signal meat_collected(value: int)
-
+signal gold_collected(value: int)
 
 func _ready():
-	pass
+	GameManager.player = self
+	meat_collected.connect(func(value: int):
+		GameManager.meat_counter += 1
+	)
+	
+	gold_collected.connect(func(value: int):
+		GameManager.gold_counter += 1
+	)
 
 func _process(delta: float) -> void:
 	
@@ -57,6 +64,10 @@ func _process(delta: float) -> void:
 		
 	# Ritual
 	update_ritual(delta)
+	
+	#atualizar barra progresso
+	health_progress_bar.max_value = max_health
+	health_progress_bar.value = health
 
 func _physics_process(delta: float) -> void:
 	# Modificar a velocidade
@@ -182,10 +193,13 @@ func deal_damage_to_enemies():
 				
 
 func die():
-	if death_prefab:
+	
+	GameManager.end_game()
+	
+	if death_prefab:		
 		var death_object = death_prefab.instantiate()
 		death_object.position = position
-		get_parent().add_child(death_object)
+		get_parent().add_child(death_object)	
 	
 	queue_free()
 

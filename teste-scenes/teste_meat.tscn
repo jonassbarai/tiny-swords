@@ -9,4 +9,4 @@
 position = Vector2(157, 199)
 
 [node name="Meat" parent="." instance=ExtResource("2_rnydf")]
-position = Vector2(353, 162)
+position = Vector2(337, 172)

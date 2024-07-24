@@ -1,9 +1,36 @@
-[gd_scene load_steps=8 format=3 uid="uid://bm83tflt7myuv"]
+[gd_scene load_steps=9 format=3 uid="uid://bm83tflt7myuv"]
 
 [ext_resource type="Script" path="res://misc/Ritual.gd" id="1_akcwc"]
 [ext_resource type="Texture2D" uid="uid://cor6yghn7mt4c" path="res://addons/PNG (Transparent)/light_02.png" id="1_r31km"]
 [ext_resource type="Texture2D" uid="uid://fc3qqrqir7p5" path="res://addons/PNG (Transparent)/circle_03.png" id="2_od8b7"]
 [ext_resource type="Texture2D" uid="uid://bs2jwgrybvrov" path="res://addons/PNG (Transparent)/magic_02.png" id="3_gv25h"]
+
+[sub_resource type="Animation" id="Animation_ifkyv"]
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Images/Magic02:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Images:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_i63k6"]
 resource_name = "default"
@@ -39,12 +66,9 @@ tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.5, 1, 2, 3, 4, 4.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0.5, 1.5, 2.5, 3.5, 4.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "values": [{
-"args": [],
-"method": &"deal_damage"
-}, {
 "args": [],
 "method": &"deal_damage"
 }, {
@@ -76,38 +100,14 @@ tracks/3/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_ifkyv"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Images/Magic02:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Images:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gmbpl"]
 _data = {
 "RESET": SubResource("Animation_ifkyv"),
 "default": SubResource("Animation_i63k6")
 }
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d4bok"]
+radius = 216.002
 
 [node name="Ritual" type="Node2D"]
 script = ExtResource("1_akcwc")
@@ -116,16 +116,25 @@ script = ExtResource("1_akcwc")
 libraries = {
 "": SubResource("AnimationLibrary_gmbpl")
 }
+autoplay = "default"
 
 [node name="Images" type="Node2D" parent="."]
 
 [node name="Light02" type="Sprite2D" parent="Images"]
+position = Vector2(0, 3.99988)
 texture = ExtResource("1_r31km")
 
 [node name="Circle03" type="Sprite2D" parent="Images"]
+position = Vector2(0, -3.99988)
 scale = Vector2(0.72169, 0.659885)
 texture = ExtResource("2_od8b7")
 
 [node name="Magic02" type="Sprite2D" parent="Images"]
 scale = Vector2(1.66878, 1.72124)
 texture = ExtResource("3_gv25h")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, 0)
+shape = SubResource("CircleShape2D_d4bok")

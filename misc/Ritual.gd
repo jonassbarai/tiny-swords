@@ -4,7 +4,6 @@ extends Node2D
 
 @onready var area2d: Area2D = $Area2D
 
-
 func deal_damage():
 	var bodies = area2d.get_overlapping_bodies()
 	for body in bodies:
