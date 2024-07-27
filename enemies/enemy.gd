@@ -44,6 +44,8 @@ func die():
 		var death_object = death_prefab.instantiate()
 		death_object.position = position
 		get_parent().add_child(death_object)
+	
+	GameManager.monsters_defeated_counter += 1
 		
 	#drop
 	if randf() <= drop_chance:
